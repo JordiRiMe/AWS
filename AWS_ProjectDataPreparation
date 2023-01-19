@@ -1,0 +1,8 @@
+source(
+  # Search enterprise ID XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
+  # Create a directory to store data
+  mkdir folder_name
+  # Copy files recursively into the folder
+  aws s3 cp s3://bid-data-folder/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/sme/project_name folder_name --recursive
+  # Download folder_name
+)

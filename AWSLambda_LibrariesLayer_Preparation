@@ -1,0 +1,21 @@
+source(
+  # Create a directory and move into it
+  mkdir packages
+  cd packages
+  # Create and activate a new environment where libraries will be installed
+  python3 -m venv venv
+  source venv/bin/activate
+  # Create and get into a python folder which will be zipped and exported
+  mkdir python
+  cd python
+  # Library installation
+  pip install library-name -t .
+  # Remove useless files
+  rm -rf *dist-info
+  # Step up a folder
+  cd ..
+  # Zip python folder which is the main structure to build a AWS Lambda layer
+  zip -r library-name.zip python
+  # Copy files into the desired AWS bucket
+  aws s3 cp library-name.zip s3://bucket-path
+)

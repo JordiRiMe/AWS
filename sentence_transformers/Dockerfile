@@ -1,9 +1,7 @@
 FROM public.ecr.aws/lambda/python:3.7
 
-COPY requirements.txt .
+COPY . ${LAMBDA_TASK_ROOT}
 
-RUN pip install -r requirements.txt -t .
+RUN pip install -r requirements.txt --target ${LAMBDA_TASK_ROOT}
 
-COPY word_embedding.py .
-
-CMD ['word_embedding.word_embedding']
+CMD [ "app.lambda_handler" ]
